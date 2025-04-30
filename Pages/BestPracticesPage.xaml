@@ -1,193 +1,311 @@
-<Page x:Class="WPF_CheckBox.Pages.BestPracticesPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WPF_CheckBox.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="最佳实践">
+<Page
+    x:Class="WPF_CheckBox.Pages.BestPracticesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPF_CheckBox.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="最佳实践"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="AliceBlue"
+    mc:Ignorable="d">
 
     <ScrollViewer>
         <StackPanel Margin="20">
-            <TextBlock Text="CheckBox最佳实践" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
-            
-            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+            <TextBlock
+                Margin="0,0,0,20"
+                FontSize="24"
+                FontWeight="Bold"
+                Text="CheckBox最佳实践" />
+
+            <Border
+                Margin="0,0,0,20"
+                Padding="15"
+                BorderBrush="#ddd"
+                BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="1. 明确的标签文本" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="1. 明确的标签文本" />
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap">
                         复选框标签应该清晰明确地表达选中后的效果，一般使用动词或动词短语。
                     </TextBlock>
-                    
+
                     <Grid Margin="0,10,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        
-                        <Border Grid.Column="0" BorderBrush="#ffcccc" BorderThickness="1" Padding="10" Margin="0,0,10,0">
+
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,10,0"
+                            Padding="10"
+                            BorderBrush="#ffcccc"
+                            BorderThickness="1">
                             <StackPanel>
-                                <TextBlock Text="❌ 不推荐" FontWeight="Bold" Foreground="#cc0000" Margin="0,0,0,10"/>
-                                <CheckBox Content="邮件"/>
-                                <CheckBox Content="选项A"/>
-                                <CheckBox Content="选项"/>
+                                <TextBlock
+                                    Margin="0,0,0,10"
+                                    FontWeight="Bold"
+                                    Foreground="#cc0000"
+                                    Text="❌ 不推荐" />
+                                <CheckBox Content="邮件" />
+                                <CheckBox Content="选项A" />
+                                <CheckBox Content="选项" />
                             </StackPanel>
                         </Border>
-                        
-                        <Border Grid.Column="1" BorderBrush="#ccffcc" BorderThickness="1" Padding="10">
+
+                        <Border
+                            Grid.Column="1"
+                            Padding="10"
+                            BorderBrush="#ccffcc"
+                            BorderThickness="1">
                             <StackPanel>
-                                <TextBlock Text="✓ 推荐" FontWeight="Bold" Foreground="#00cc00" Margin="0,0,0,10"/>
-                                <CheckBox Content="接收邮件通知"/>
-                                <CheckBox Content="启用自动保存功能"/>
-                                <CheckBox Content="记住我的登录信息"/>
+                                <TextBlock
+                                    Margin="0,0,0,10"
+                                    FontWeight="Bold"
+                                    Foreground="#00cc00"
+                                    Text="✓ 推荐" />
+                                <CheckBox Content="接收邮件通知" />
+                                <CheckBox Content="启用自动保存功能" />
+                                <CheckBox Content="记住我的登录信息" />
                             </StackPanel>
                         </Border>
                     </Grid>
                 </StackPanel>
             </Border>
-            
-            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+
+            <Border
+                Margin="0,0,0,20"
+                Padding="15"
+                BorderBrush="#ddd"
+                BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="2. 默认状态选择" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="2. 默认状态选择" />
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap">
                         谨慎选择默认状态。一般来说，默认勾选项应该是安全的、非侵入性的选项。安全相关和隐私相关的选项通常默认不勾选。
                     </TextBlock>
-                    
-                    <TextBlock FontWeight="SemiBold" Margin="0,10,0,5">默认状态的选择原则：</TextBlock>
+
+                    <TextBlock Margin="0,10,0,5" FontWeight="SemiBold">默认状态的选择原则：</TextBlock>
                     <StackPanel Margin="10,0,0,0">
-                        <CheckBox Content="默认勾选：用户期望并希望启用的功能" IsChecked="True" Margin="0,5"/>
-                        <CheckBox Content="默认不勾选：可能产生额外费用或向用户发送通知的功能" Margin="0,5"/>
-                        <CheckBox Content="默认不勾选：涉及个人隐私或数据共享的功能" Margin="0,5"/>
+                        <CheckBox
+                            Margin="0,5"
+                            Content="默认勾选：用户期望并希望启用的功能"
+                            IsChecked="True" />
+                        <CheckBox Margin="0,5" Content="默认不勾选：可能产生额外费用或向用户发送通知的功能" />
+                        <CheckBox Margin="0,5" Content="默认不勾选：涉及个人隐私或数据共享的功能" />
                     </StackPanel>
                 </StackPanel>
             </Border>
-            
-            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+
+            <Border
+                Margin="0,0,0,20"
+                Padding="15"
+                BorderBrush="#ddd"
+                BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="3. 避免双重否定" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="3. 避免双重否定" />
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap">
                         复选框标签文本应避免使用双重否定，这会使用户混淆。
                     </TextBlock>
-                    
+
                     <Grid Margin="0,10,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        
-                        <Border Grid.Column="0" BorderBrush="#ffcccc" BorderThickness="1" Padding="10" Margin="0,0,10,0">
+
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,10,0"
+                            Padding="10"
+                            BorderBrush="#ffcccc"
+                            BorderThickness="1">
                             <StackPanel>
-                                <TextBlock Text="❌ 不推荐" FontWeight="Bold" Foreground="#cc0000" Margin="0,0,0,10"/>
-                                <CheckBox Content="不禁用通知"/>
-                                <CheckBox Content="不隐藏离线用户"/>
+                                <TextBlock
+                                    Margin="0,0,0,10"
+                                    FontWeight="Bold"
+                                    Foreground="#cc0000"
+                                    Text="❌ 不推荐" />
+                                <CheckBox Content="不禁用通知" />
+                                <CheckBox Content="不隐藏离线用户" />
                             </StackPanel>
                         </Border>
-                        
-                        <Border Grid.Column="1" BorderBrush="#ccffcc" BorderThickness="1" Padding="10">
+
+                        <Border
+                            Grid.Column="1"
+                            Padding="10"
+                            BorderBrush="#ccffcc"
+                            BorderThickness="1">
                             <StackPanel>
-                                <TextBlock Text="✓ 推荐" FontWeight="Bold" Foreground="#00cc00" Margin="0,0,0,10"/>
-                                <CheckBox Content="启用通知"/>
-                                <CheckBox Content="显示离线用户"/>
+                                <TextBlock
+                                    Margin="0,0,0,10"
+                                    FontWeight="Bold"
+                                    Foreground="#00cc00"
+                                    Text="✓ 推荐" />
+                                <CheckBox Content="启用通知" />
+                                <CheckBox Content="显示离线用户" />
                             </StackPanel>
                         </Border>
                     </Grid>
                 </StackPanel>
             </Border>
-            
-            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+
+            <Border
+                Margin="0,0,0,20"
+                Padding="15"
+                BorderBrush="#ddd"
+                BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="4. 分组与布局" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="4. 分组与布局" />
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap">
                         相关的复选框应该视觉上分组在一起，使用适当的间距和标题。
                     </TextBlock>
-                    
+
                     <Grid Margin="0,10,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        
-                        <Border Grid.Column="0" BorderBrush="#ffcccc" BorderThickness="1" Padding="10" Margin="0,0,10,0">
+
+                        <Border
+                            Grid.Column="0"
+                            Margin="0,0,10,0"
+                            Padding="10"
+                            BorderBrush="#ffcccc"
+                            BorderThickness="1">
                             <StackPanel>
-                                <TextBlock Text="❌ 不推荐" FontWeight="Bold" Foreground="#cc0000" Margin="0,0,0,10"/>
+                                <TextBlock
+                                    Margin="0,0,0,10"
+                                    FontWeight="Bold"
+                                    Foreground="#cc0000"
+                                    Text="❌ 不推荐" />
                                 <StackPanel>
-                                    <CheckBox Content="接收邮件通知"/>
-                                    <CheckBox Content="自动保存文档"/>
-                                    <CheckBox Content="接收短信通知"/>
-                                    <CheckBox Content="显示工具栏"/>
-                                    <CheckBox Content="接收应用内通知"/>
+                                    <CheckBox Content="接收邮件通知" />
+                                    <CheckBox Content="自动保存文档" />
+                                    <CheckBox Content="接收短信通知" />
+                                    <CheckBox Content="显示工具栏" />
+                                    <CheckBox Content="接收应用内通知" />
                                 </StackPanel>
                             </StackPanel>
                         </Border>
-                        
-                        <Border Grid.Column="1" BorderBrush="#ccffcc" BorderThickness="1" Padding="10">
+
+                        <Border
+                            Grid.Column="1"
+                            Padding="10"
+                            BorderBrush="#ccffcc"
+                            BorderThickness="1">
                             <StackPanel>
-                                <TextBlock Text="✓ 推荐" FontWeight="Bold" Foreground="#00cc00" Margin="0,0,0,10"/>
+                                <TextBlock
+                                    Margin="0,0,0,10"
+                                    FontWeight="Bold"
+                                    Foreground="#00cc00"
+                                    Text="✓ 推荐" />
                                 <StackPanel>
-                                    <TextBlock Text="通知设置" FontWeight="SemiBold" Margin="0,0,0,5"/>
-                                    <CheckBox Content="接收邮件通知" Margin="10,0,0,0"/>
-                                    <CheckBox Content="接收短信通知" Margin="10,0,0,0"/>
-                                    <CheckBox Content="接收应用内通知" Margin="10,0,0,0"/>
-                                    
-                                    <TextBlock Text="界面设置" FontWeight="SemiBold" Margin="0,15,0,5"/>
-                                    <CheckBox Content="显示工具栏" Margin="10,0,0,0"/>
-                                    <CheckBox Content="自动保存文档" Margin="10,0,0,0"/>
+                                    <TextBlock
+                                        Margin="0,0,0,5"
+                                        FontWeight="SemiBold"
+                                        Text="通知设置" />
+                                    <CheckBox Margin="10,0,0,0" Content="接收邮件通知" />
+                                    <CheckBox Margin="10,0,0,0" Content="接收短信通知" />
+                                    <CheckBox Margin="10,0,0,0" Content="接收应用内通知" />
+
+                                    <TextBlock
+                                        Margin="0,15,0,5"
+                                        FontWeight="SemiBold"
+                                        Text="界面设置" />
+                                    <CheckBox Margin="10,0,0,0" Content="显示工具栏" />
+                                    <CheckBox Margin="10,0,0,0" Content="自动保存文档" />
                                 </StackPanel>
                             </StackPanel>
                         </Border>
                     </Grid>
                 </StackPanel>
             </Border>
-            
-            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15">
+
+            <Border
+                Padding="15"
+                BorderBrush="#ddd"
+                BorderThickness="1">
                 <StackPanel>
-                    <TextBlock Text="5. 响应式反馈" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Text="5. 响应式反馈" />
+                    <TextBlock Margin="0,0,0,10" TextWrapping="Wrap">
                         当复选框状态改变时，应给予用户明确的反馈，尤其是当变更影响其他界面元素时。
                     </TextBlock>
-                    
+
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        
-                        <CheckBox Grid.Row="0" 
-                                  Content="启用高级设置" 
-                                  x:Name="enableAdvancedSettings"
-                                  Checked="EnableAdvancedSettings_CheckChanged"
-                                  Unchecked="EnableAdvancedSettings_CheckChanged"
-                                  Margin="0,0,0,10"/>
-                        
-                        <Border Grid.Row="1" 
-                                x:Name="advancedSettingsPanel"
-                                Background="#f8f8f8" 
-                                BorderBrush="#ddd"
-                                BorderThickness="1"
-                                Padding="15"
-                                Visibility="Collapsed">
+
+                        <CheckBox
+                            x:Name="enableAdvancedSettings"
+                            Grid.Row="0"
+                            Margin="0,0,0,10"
+                            Checked="EnableAdvancedSettings_CheckChanged"
+                            Content="启用高级设置"
+                            Unchecked="EnableAdvancedSettings_CheckChanged" />
+
+                        <Border
+                            x:Name="advancedSettingsPanel"
+                            Grid.Row="1"
+                            Padding="15"
+                            Background="#f8f8f8"
+                            BorderBrush="#ddd"
+                            BorderThickness="1"
+                            Visibility="Collapsed">
                             <StackPanel>
-                                <TextBlock Text="高级设置" FontWeight="SemiBold" Margin="0,0,0,10"/>
-                                <Slider Width="200" HorizontalAlignment="Left" Margin="0,5"/>
-                                <StackPanel Orientation="Horizontal" Margin="0,5">
-                                    <TextBlock Text="缓存大小:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                    <ComboBox SelectedIndex="0" Width="100">
-                                        <ComboBoxItem Content="128 MB"/>
-                                        <ComboBoxItem Content="256 MB"/>
-                                        <ComboBoxItem Content="512 MB"/>
-                                        <ComboBoxItem Content="1 GB"/>
+                                <TextBlock
+                                    Margin="0,0,0,10"
+                                    FontWeight="SemiBold"
+                                    Text="高级设置" />
+                                <Slider
+                                    Width="200"
+                                    Margin="0,5"
+                                    HorizontalAlignment="Left" />
+                                <StackPanel Margin="0,5" Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,5,0"
+                                        VerticalAlignment="Center"
+                                        Text="缓存大小:" />
+                                    <ComboBox Width="100" SelectedIndex="0">
+                                        <ComboBoxItem Content="128 MB" />
+                                        <ComboBoxItem Content="256 MB" />
+                                        <ComboBoxItem Content="512 MB" />
+                                        <ComboBoxItem Content="1 GB" />
                                     </ComboBox>
                                 </StackPanel>
-                                <CheckBox Content="启用开发者模式" Margin="0,5"/>
+                                <CheckBox Margin="0,5" Content="启用开发者模式" />
                             </StackPanel>
                         </Border>
-                        
-                        <TextBlock Grid.Row="2"
-                                   Text="提示：点击上方的复选框以查看响应式反馈示例"
-                                   FontStyle="Italic"
-                                   Foreground="#666"
-                                   Margin="0,10,0,0"/>
+
+                        <TextBlock
+                            Grid.Row="2"
+                            Margin="0,10,0,0"
+                            FontStyle="Italic"
+                            Foreground="#666"
+                            Text="提示：点击上方的复选框以查看响应式反馈示例" />
                     </Grid>
                 </StackPanel>
             </Border>
