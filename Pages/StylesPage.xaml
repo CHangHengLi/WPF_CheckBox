@@ -1,0 +1,262 @@
+<Page x:Class="WPF_CheckBox.Pages.StylesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_CheckBox.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="自定义样式">
+
+    <Page.Resources>
+        <!-- 基础样式 -->
+        <Style x:Key="ModernCheckBox" TargetType="CheckBox">
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        
+        <!-- 蓝色主题样式 -->
+        <Style x:Key="BlueCheckBox" TargetType="CheckBox" BasedOn="{StaticResource ModernCheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- 自定义复选框框 -->
+                            <Border x:Name="checkBoxBorder" 
+                                    Width="18" Height="18" 
+                                    BorderBrush="#2196F3" 
+                                    BorderThickness="2" 
+                                    CornerRadius="3"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,8,0">
+                                <Path x:Name="checkMark" 
+                                      Data="M4,10 L7,14 L14,5" 
+                                      Stroke="#FFFFFF" 
+                                      StrokeThickness="2"
+                                      Stretch="Uniform" 
+                                      Visibility="Collapsed"/>
+                            </Border>
+                            
+                            <!-- 内容区域 -->
+                            <ContentPresenter Grid.Column="1" 
+                                              VerticalAlignment="Center" 
+                                              HorizontalAlignment="Left"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="checkBoxBorder" Property="Background" Value="#2196F3"/>
+                                <Setter TargetName="checkMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#1976D2"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="#BDBDBD"/>
+                                <Setter Property="Foreground" Value="#BDBDBD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- 开关式样式 -->
+        <Style x:Key="ToggleCheckBox" TargetType="CheckBox" BasedOn="{StaticResource ModernCheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- 开关背景 -->
+                            <Border x:Name="toggleBackground" 
+                                    Width="40" Height="20" 
+                                    Background="#BDBDBD" 
+                                    CornerRadius="10"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,8,0">
+                                
+                                <!-- 开关圆点 -->
+                                <Border x:Name="toggleButton" 
+                                        Width="16" Height="16" 
+                                        Background="White" 
+                                        CornerRadius="8"
+                                        HorizontalAlignment="Left"
+                                        Margin="2,0,0,0"/>
+                            </Border>
+                            
+                            <!-- 内容区域 -->
+                            <ContentPresenter Grid.Column="1" 
+                                              VerticalAlignment="Center" 
+                                              HorizontalAlignment="Left"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="toggleBackground" Property="Background" Value="#4CAF50"/>
+                                <Setter TargetName="toggleButton" Property="HorizontalAlignment" Value="Right"/>
+                                <Setter TargetName="toggleButton" Property="Margin" Value="0,0,2,0"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="toggleBackground" Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="toggleBackground" Property="Opacity" Value="0.5"/>
+                                <Setter Property="Foreground" Value="#BDBDBD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- 圆形样式 -->
+        <Style x:Key="CircleCheckBox" TargetType="CheckBox" BasedOn="{StaticResource ModernCheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- 圆形复选框 -->
+                            <Ellipse x:Name="circleBox" 
+                                    Width="18" Height="18" 
+                                    Stroke="#FF5722" 
+                                    StrokeThickness="2" 
+                                    Fill="Transparent"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,8,0"/>
+                            
+                            <!-- 内容区域 -->
+                            <ContentPresenter Grid.Column="1" 
+                                              VerticalAlignment="Center" 
+                                              HorizontalAlignment="Left"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="circleBox" Property="Fill" Value="#FF5722"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="circleBox" Property="Stroke" Value="#E64A19"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="circleBox" Property="Stroke" Value="#BDBDBD"/>
+                                <Setter Property="Foreground" Value="#BDBDBD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <StackPanel Margin="20">
+            <TextBlock Text="CheckBox自定义样式" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+            
+            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="1. 基本样式" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                        简单的样式调整，使用Style元素设置基本属性。
+                    </TextBlock>
+                    
+                    <StackPanel Margin="10">
+                        <CheckBox Content="默认复选框" Margin="0,5"/>
+                        
+                        <CheckBox Content="使用基础ModernCheckBox样式" 
+                                  Style="{StaticResource ModernCheckBox}"
+                                  Margin="0,10,0,5"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="2. 蓝色主题样式" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                        完全重定义CheckBox的外观，使用蓝色主题。
+                    </TextBlock>
+                    
+                    <StackPanel Margin="10">
+                        <CheckBox Content="未选中状态" 
+                                  Style="{StaticResource BlueCheckBox}"
+                                  Margin="0,5"/>
+                        
+                        <CheckBox Content="选中状态" 
+                                  IsChecked="True"
+                                  Style="{StaticResource BlueCheckBox}"
+                                  Margin="0,5"/>
+                        
+                        <CheckBox Content="禁用状态" 
+                                  IsEnabled="False"
+                                  Style="{StaticResource BlueCheckBox}"
+                                  Margin="0,5"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="3. 开关样式" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                        将CheckBox样式设计成类似于移动端的开关控件。
+                    </TextBlock>
+                    
+                    <StackPanel Margin="10">
+                        <CheckBox Content="关闭状态" 
+                                  Style="{StaticResource ToggleCheckBox}"
+                                  Margin="0,5"/>
+                        
+                        <CheckBox Content="开启状态" 
+                                  IsChecked="True"
+                                  Style="{StaticResource ToggleCheckBox}"
+                                  Margin="0,5"/>
+                        
+                        <CheckBox Content="禁用状态" 
+                                  IsEnabled="False"
+                                  Style="{StaticResource ToggleCheckBox}"
+                                  Margin="0,5"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="4. 圆形样式" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                        将CheckBox样式设计成圆形外观，适合单选分组场景。
+                    </TextBlock>
+                    
+                    <StackPanel Margin="10">
+                        <CheckBox Content="未选中状态" 
+                                  Style="{StaticResource CircleCheckBox}"
+                                  Margin="0,5"/>
+                        
+                        <CheckBox Content="选中状态" 
+                                  IsChecked="True"
+                                  Style="{StaticResource CircleCheckBox}"
+                                  Margin="0,5"/>
+                        
+                        <CheckBox Content="禁用状态" 
+                                  IsEnabled="False"
+                                  Style="{StaticResource CircleCheckBox}"
+                                  Margin="0,5"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page> 

@@ -1,0 +1,78 @@
+<Page x:Class="WPF_CheckBox.Pages.ThreeStatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_CheckBox.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="三态CheckBox">
+
+    <ScrollViewer>
+        <StackPanel Margin="20">
+            <TextBlock Text="三态CheckBox" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+            
+            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="1. 三态基本用法" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                        通过设置IsThreeState属性为true，可以让CheckBox支持三种状态：选中(true)、取消选中(false)和不确定(null)。
+                    </TextBlock>
+                    
+                    <StackPanel Margin="10">
+                        <CheckBox x:Name="threeStateCheckBox" 
+                                  Content="三态复选框" 
+                                  IsThreeState="True"
+                                  Margin="0,5"
+                                  Checked="ThreeState_StateChanged"
+                                  Unchecked="ThreeState_StateChanged"
+                                  Indeterminate="ThreeState_StateChanged"/>
+                        
+                        <StackPanel Orientation="Horizontal" Margin="0,10">
+                            <Button Content="设为选中" Click="SetChecked_Click" Margin="0,0,5,0"/>
+                            <Button Content="设为未选中" Click="SetUnchecked_Click" Margin="0,0,5,0"/>
+                            <Button Content="设为不确定" Click="SetIndeterminate_Click"/>
+                        </StackPanel>
+                        
+                        <TextBlock x:Name="stateText" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+            <Border BorderBrush="#ddd" BorderThickness="1" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="2. 全选功能应用" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                        三态CheckBox常用于"全选"功能，当子项全部选中时为选中状态，全部未选中时为未选中状态，部分选中时为不确定状态。
+                    </TextBlock>
+                    
+                    <StackPanel Margin="10">
+                        <CheckBox x:Name="parentCheckBox" 
+                                  Content="全选" 
+                                  IsThreeState="True"
+                                  Margin="0,5"
+                                  Click="ParentCheckBox_CheckChanged"/>
+                        
+                        <StackPanel Margin="20,5,0,0">
+                            <CheckBox x:Name="childCheckBox1" 
+                                      Content="子选项1" 
+                                      Margin="0,5"
+                                      Checked="ChildCheckBox_CheckChanged"
+                                      Unchecked="ChildCheckBox_CheckChanged"/>
+                            <CheckBox x:Name="childCheckBox2" 
+                                      Content="子选项2" 
+                                      Margin="0,5"
+                                      Checked="ChildCheckBox_CheckChanged"
+                                      Unchecked="ChildCheckBox_CheckChanged"/>
+                            <CheckBox x:Name="childCheckBox3" 
+                                      Content="子选项3" 
+                                      Margin="0,5"
+                                      Checked="ChildCheckBox_CheckChanged"
+                                      Unchecked="ChildCheckBox_CheckChanged"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page> 
