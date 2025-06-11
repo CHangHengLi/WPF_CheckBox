@@ -1,6 +1,7 @@
 # WPF CheckBox控件演示程序
 
 这是一个基于.NET Core 8.0的WPF应用程序，用于演示WPF中CheckBox控件的各种用法和功能。该项目展示了CheckBox控件的基础知识、高级特性和常见应用场景。
+![image](https://github.com/user-attachments/assets/1d44c545-39c0-4fe0-94b6-de219805d739)
 
 ## 主要功能
 
